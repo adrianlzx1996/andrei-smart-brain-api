@@ -6,10 +6,13 @@ const { handleSignIn } = require("./controllers/signin");
 const { handleProfile } = require("./controllers/profile");
 const { handleImage, handleApiCall } = require("./controllers/image");
 
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0;
+
 const db = require("knex")({
 	client: "pg",
 	connection: {
 		connectionString: process.env.DATABASE_URL,
+		ssl: true,
 	},
 });
 
